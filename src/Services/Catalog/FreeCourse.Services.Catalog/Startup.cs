@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeCourse.Services.Catalog.Settings;
+using Microsoft.Extensions.Options;
 
 namespace FreeCourse.Services.Catalog
 {
@@ -25,11 +27,19 @@ namespace FreeCourse.Services.Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+
+            services.AddSingleton<IDatabaseSettings>(provider =>
+            {
+                return provider.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+            });
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.Catalog", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "FreeCourse.Services.Catalog", Version = "v1"});
             });
         }
 
@@ -47,10 +57,7 @@ namespace FreeCourse.Services.Catalog
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
