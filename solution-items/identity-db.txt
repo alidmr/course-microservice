@@ -1,0 +1,9 @@
+IdentityServer4:
+   -localhos:14533s
+   -sa
+   -SaPassword : Password12*
+   
+
+
+add-migration initial
+update-database
