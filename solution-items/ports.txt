@@ -1,2 +1,5 @@
 Services
 	-catalogAPI => http://localhost:5011
+
+IdentityServer4:
+    -port : http://localhost:5001
