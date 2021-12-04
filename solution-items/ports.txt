@@ -3,6 +3,7 @@ Services
 	-photoStockAPI => http://localhost:5012
 	-basketAPI => http://localhost:5013
 	-discountAPI => http://localhost:5014
+	-orderAPI => http://localhost:5015
 
 IdentityServer4:
     -port : http://localhost:5001
