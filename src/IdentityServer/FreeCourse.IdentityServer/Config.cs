@@ -19,6 +19,7 @@ namespace FreeCourse.IdentityServer
             new ApiResource("resource_discount") {Scopes = {"discount_full_permission"}},
             new ApiResource("resource_order") {Scopes = {"order_full_permission"}},
             new ApiResource("resource_payment") {Scopes = {"payment_full_permission"}},
+            new ApiResource("resource_gateway") {Scopes = {"gateway_full_permission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -46,6 +47,7 @@ namespace FreeCourse.IdentityServer
                 new ApiScope("discount_full_permission", "Discount API icin full erisim"),
                 new ApiScope("order_full_permission", "Order API icin full erisim"),
                 new ApiScope("payment_full_permission", "Payment API icin full erisim"),
+                new ApiScope("gateway_full_permission", "Gateway API icin full erisim"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -65,6 +67,7 @@ namespace FreeCourse.IdentityServer
                     {
                         "catalog_full_permission",
                         "photo_stock_full_permission",
+                        "gateway_full_permission",
                         IdentityServerConstants.LocalApi.ScopeName
                     }
                 },
@@ -84,6 +87,7 @@ namespace FreeCourse.IdentityServer
                         "discount_full_permission",
                         "order_full_permission",
                         "payment_full_permission",
+                        "gateway_full_permission",
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,

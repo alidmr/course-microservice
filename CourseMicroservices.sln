@@ -54,6 +54,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.FakePayment", "src\Services\FakePayment\FreeCourse.Services.FakePayment\FreeCourse.Services.FakePayment.csproj", "{E3CDCDC1-7A72-4802-8BB5-7552EE211892}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{0C9EFFAF-F459-4EDA-88C1-54C02B8B7273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Gateway", "src\Gateways\FreeCourse.Gateway\FreeCourse.Gateway.csproj", "{11CC0707-5E70-4386-B0C0-779DE7D43D3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +112,10 @@ Global
 		{E3CDCDC1-7A72-4802-8BB5-7552EE211892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3CDCDC1-7A72-4802-8BB5-7552EE211892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3CDCDC1-7A72-4802-8BB5-7552EE211892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CC0707-5E70-4386-B0C0-779DE7D43D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CC0707-5E70-4386-B0C0-779DE7D43D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CC0707-5E70-4386-B0C0-779DE7D43D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CC0707-5E70-4386-B0C0-779DE7D43D3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +142,8 @@ Global
 		{0C777A62-DB2E-491C-9517-3A9559C61513} = {CE11782B-709D-4D5F-8DBF-39FE1CD1CAAD}
 		{C8D447D9-F74A-41A2-AEEB-9DF42BF313BA} = {D691E852-26DF-4782-A95B-B381F4B7828C}
 		{E3CDCDC1-7A72-4802-8BB5-7552EE211892} = {C8D447D9-F74A-41A2-AEEB-9DF42BF313BA}
+		{0C9EFFAF-F459-4EDA-88C1-54C02B8B7273} = {E043F662-463E-43DE-AB34-DFD4D88CA5CC}
+		{11CC0707-5E70-4386-B0C0-779DE7D43D3F} = {0C9EFFAF-F459-4EDA-88C1-54C02B8B7273}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {510B8653-EBD0-41F6-BD6F-48A8EDBF0A96}
