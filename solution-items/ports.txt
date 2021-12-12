@@ -4,6 +4,7 @@ Services
 	-basketAPI => http://localhost:5013
 	-discountAPI => http://localhost:5014
 	-orderAPI => http://localhost:5015
+	-fakePaymentAPI => http://localhost:5016
 
 IdentityServer4:
     -port : http://localhost:5001

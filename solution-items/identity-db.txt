@@ -1,5 +1,5 @@
 IdentityServer4:
-   -localhos:14533s
+   -localhost:1433
    -sa
    -SaPassword : Password12*
    
