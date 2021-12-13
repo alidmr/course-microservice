@@ -11,3 +11,6 @@ IdentityServer4:
 
 Gateway:
 	-port : http://localhost:5000
+
+Web App:
+	-port: http://localhost:5010
