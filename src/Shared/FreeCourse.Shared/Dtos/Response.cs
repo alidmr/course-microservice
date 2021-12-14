@@ -5,23 +5,25 @@ namespace FreeCourse.Shared.Dtos
 {
     public class Response<T>
     {
-        public T Data { get; private set; }
+        public T Data { get; set; }
 
-        [JsonIgnore] public int StatusCode { get; private set; }
+        [JsonIgnore]
+        public int StatusCode { get; set; }
 
-        [JsonIgnore] public bool IsSuccess { get; private set; }
+        [JsonIgnore]
+        public bool IsSuccess { get; set; }
 
         public List<string> Errors { get; set; }
 
         // static factory method
         public static Response<T> Success(T data, int statusCode)
         {
-            return new Response<T> {Data = data, StatusCode = statusCode, IsSuccess = true};
+            return new Response<T> { Data = data, StatusCode = statusCode, IsSuccess = true };
         }
 
         public static Response<T> Success(int statusCode)
         {
-            return new Response<T> {Data = default(T), StatusCode = statusCode, IsSuccess = true};
+            return new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccess = true };
         }
 
         public static Response<T> Fail(List<string> errors, int statusCode)
@@ -38,7 +40,7 @@ namespace FreeCourse.Shared.Dtos
         {
             return new Response<T>
             {
-                Errors = new List<string>() {error},
+                Errors = new List<string>() { error },
                 StatusCode = statusCode,
                 IsSuccess = false
             };

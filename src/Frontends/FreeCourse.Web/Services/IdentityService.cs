@@ -6,7 +6,8 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FreeCourse.Shared.Dtos;
-using FreeCourse.Web.Models;
+using FreeCourse.Web.Models.Auth;
+using FreeCourse.Web.Models.Settings;
 using FreeCourse.Web.Services.Interfaces;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
@@ -37,7 +38,7 @@ namespace FreeCourse.Web.Services
         {
             var disco = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest()
             {
-                Address = _serviceApiSettings.BaseUri,
+                Address = _serviceApiSettings.IdentityBaseUri,
                 Policy = new DiscoveryPolicy() { RequireHttps = false }
             });
 
@@ -106,7 +107,7 @@ namespace FreeCourse.Web.Services
         {
             var disco = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest()
             {
-                Address = _serviceApiSettings.BaseUri,
+                Address = _serviceApiSettings.IdentityBaseUri,
                 Policy = new DiscoveryPolicy() { RequireHttps = false }
             });
 
@@ -159,7 +160,7 @@ namespace FreeCourse.Web.Services
         {
             var disco = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest()
             {
-                Address = _serviceApiSettings.BaseUri,
+                Address = _serviceApiSettings.IdentityBaseUri,
                 Policy = new DiscoveryPolicy() { RequireHttps = false }
             });
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FreeCourse.Web.Models
+namespace FreeCourse.Web.Models.Auth
 {
     public class SignInInput
     {
