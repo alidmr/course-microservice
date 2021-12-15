@@ -7,3 +7,6 @@ IdentityServer4:
 
 add-migration initial
 update-database
+
+AccessToken(1 saat)
+RefreshToken(60 gün)
