@@ -1,11 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FreeCourse.Services.Catalog.Dtos;
 using FreeCourse.Services.Catalog.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,15 +20,15 @@ namespace FreeCourse.Services.Catalog
                 {
                     categoryService.CreateAsync(new CategoryDto()
                     {
-                        Name = "Asp.Net Core Kursu"
+                        Name = "Asp.Net Core"
                     }).Wait();
                     categoryService.CreateAsync(new CategoryDto()
                     {
-                        Name = "Asp.Net Core API Kursu"
+                        Name = "Sql Server"
                     }).Wait();
                 }
             }
-            
+
             host.Run();
         }
 
