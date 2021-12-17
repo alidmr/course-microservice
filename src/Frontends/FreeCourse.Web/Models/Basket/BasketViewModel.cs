@@ -14,7 +14,8 @@ namespace FreeCourse.Web.Models.Basket
         public string UserId { get; set; }
         public string DiscountCode { get; set; }
         public int? DiscountRate { get; set; }
-        private List<BasketItemViewModel> _basketItems { get; set; }
+
+        private List<BasketItemViewModel> _basketItems;
 
         public List<BasketItemViewModel> BasketItems
         {
@@ -25,7 +26,7 @@ namespace FreeCourse.Web.Models.Basket
                     //Örnek kurs fiyatı 100 Tl indirim oranı %10
                     _basketItems.ForEach(x =>
                     {
-                        var discountPrice = x.Price * ((decimal) DiscountRate.Value / 100);
+                        var discountPrice = x.Price * ((decimal)DiscountRate.Value / 100);
                         x.AppliedDiscount(Math.Round(x.Price - discountPrice, 2)); //90.00
                     });
                 }
@@ -37,6 +38,18 @@ namespace FreeCourse.Web.Models.Basket
 
         public decimal TotalPrice => BasketItems.Sum(x => x.GetCurrentPrice);
 
-        public bool HasDiscount => !string.IsNullOrEmpty(DiscountCode);
+        public bool HasDiscount => !string.IsNullOrEmpty(DiscountCode) && DiscountRate.HasValue;
+
+        public void CancelDiscount()
+        {
+            DiscountCode = null;
+            DiscountRate = null;
+        }
+
+        public void ApplyDiscount(string code, int rate)
+        {
+            DiscountCode = code;
+            DiscountRate = rate;
+        }
     }
 }

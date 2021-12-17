@@ -6,13 +6,14 @@ namespace FreeCourse.Web.Models.Basket
         public string CourseId { get; set; }
         public string CourseName { get; set; }
         public decimal Price { get; set; }
-        private decimal? DiscountAppliedPrice { get; set; }
 
-        public decimal GetCurrentPrice => DiscountAppliedPrice ?? Price;
+        private decimal? _discountAppliedPrice;
+
+        public decimal GetCurrentPrice => _discountAppliedPrice ?? Price;
 
         public void AppliedDiscount(decimal discountPrice)
         {
-            DiscountAppliedPrice = discountPrice;
+            _discountAppliedPrice = discountPrice;
         }
     }
 }

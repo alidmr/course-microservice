@@ -18,6 +18,16 @@ namespace FreeCourse.Web.Extensions
 
             services.AddHttpClient<IIdentityService, IdentityService>();
 
+            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
@@ -28,15 +38,12 @@ namespace FreeCourse.Web.Extensions
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Basket.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
+            services.AddHttpClient<IDiscountService, DiscountService>(opt =>
             {
-                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Discount.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-            services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
-            {
-                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
-            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
         }
     }
 }

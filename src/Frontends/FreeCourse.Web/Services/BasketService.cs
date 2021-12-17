@@ -11,10 +11,12 @@ namespace FreeCourse.Web.Services
     public class BasketService : IBasketService
     {
         private readonly HttpClient _httpClient;
+        private readonly IDiscountService _discountService;
 
-        public BasketService(HttpClient httpClient)
+        public BasketService(HttpClient httpClient, IDiscountService discountService)
         {
             _httpClient = httpClient;
+            _discountService = discountService;
         }
 
         public async Task<bool> SaveOrUpdate(BasketViewModel model)
@@ -33,6 +35,7 @@ namespace FreeCourse.Web.Services
                 return null;
             }
             var basketViewModel = await response.Content.ReadFromJsonAsync<Response<BasketViewModel>>();
+
             return basketViewModel?.Data;
         }
 
@@ -90,14 +93,43 @@ namespace FreeCourse.Web.Services
             return await SaveOrUpdate(basket);
         }
 
-        public Task<bool> ApplyDiscountAsync(string discountCode)
+        public async Task<bool> ApplyDiscountAsync(string discountCode)
         {
-            throw new System.NotImplementedException();
+            await CancelApplyDiscountAsync();
+
+            var basket = await GetAsync();
+
+            if (basket == null)
+            {
+                return false;
+            }
+
+            var hasDiscount = await _discountService.GetDiscountAsync(discountCode);
+
+            if (hasDiscount == null)
+            {
+                return false;
+            }
+
+            basket.ApplyDiscount(hasDiscount.Code, hasDiscount.Rate);
+
+            var result = await SaveOrUpdate(basket);
+
+            return result;
         }
 
-        public Task<bool> CancelApplyDiscountAsync()
+        public async Task<bool> CancelApplyDiscountAsync()
         {
-            throw new System.NotImplementedException();
+            var basket = await GetAsync();
+
+            if (basket == null || basket.DiscountCode == null)
+                return false;
+
+            basket.CancelDiscount();
+
+            var result = await SaveOrUpdate(basket);
+
+            return result;
         }
     }
 }
