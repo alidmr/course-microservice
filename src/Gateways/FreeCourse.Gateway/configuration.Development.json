@@ -94,7 +94,7 @@
           "Port": 5016
         }
       ],
-      "UpstreamPathTemplate": "/services/payment/{everything}",
+      "UpstreamPathTemplate": "/services/fakepayment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
