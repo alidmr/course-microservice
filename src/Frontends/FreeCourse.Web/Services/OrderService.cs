@@ -43,7 +43,7 @@ namespace FreeCourse.Web.Services
 
             if (!responsePayment)
             {
-                return new OrderCreatedViewModel() {Error = "Ödeme alınamadı", IsSuccess = false};
+                return new OrderCreatedViewModel() { Error = "Ödeme alınamadı", IsSuccess = false };
             }
 
             OrderCreateInput orderCreateInput = new OrderCreateInput()
@@ -64,7 +64,7 @@ namespace FreeCourse.Web.Services
                 OrderItemCreateInput orderItemCreateInput = new OrderItemCreateInput()
                 {
                     ProductId = x.CourseId,
-                    Price = x.Price,
+                    Price = x.GetCurrentPrice,
                     ProductName = x.CourseName,
                     PictureUrl = ""
                 };
@@ -76,12 +76,15 @@ namespace FreeCourse.Web.Services
 
             if (!response.IsSuccessStatusCode)
             {
-                return new OrderCreatedViewModel() {Error = "Şipariş oluşturulamadı", IsSuccess = false};
+                return new OrderCreatedViewModel() { Error = "Şipariş oluşturulamadı", IsSuccess = false };
             }
 
-            var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+            var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
+            orderCreatedViewModel.Data.IsSuccess = true;
 
-            return orderCreatedViewModel;
+            var deleteBasketResult = await _basketService.DeleteAsync();
+
+            return orderCreatedViewModel.Data;
         }
 
         public Task SuspendOrder(CheckInfoInput model)
