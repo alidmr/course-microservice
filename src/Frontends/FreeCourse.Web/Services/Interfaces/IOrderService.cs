@@ -18,7 +18,7 @@ namespace FreeCourse.Web.Services.Interfaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task SuspendOrder(CheckInfoInput model);
+        Task<OrderSuspendViewModel> SuspendOrder(CheckInfoInput model);
 
         Task<List<OrderViewModel>> GetOrder();
     }
