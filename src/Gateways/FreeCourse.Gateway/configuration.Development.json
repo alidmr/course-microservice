@@ -14,7 +14,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["catalog_full_permission"]
+        "AllowedScopes": [ "catalog_full_permission" ]
       }
     },
     {
@@ -31,7 +31,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["photo_stock_full_permission"]
+        "AllowedScopes": [ "photo_stock_full_permission" ]
       }
     },
     {
@@ -48,7 +48,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["basket_full_permission"]
+        "AllowedScopes": [ "basket_full_permission" ]
       }
     },
     {
@@ -63,9 +63,9 @@
       "UpstreamPathTemplate": "/services/discount/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["discount_full_permission"]
+        "AuthenticationProviderKey": "GatewayAuthenticationScheme"
       }
     },
     {
@@ -82,7 +82,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["order_full_permission"]
+        "AllowedScopes": [ "order_full_permission" ]
       }
     },
     {
@@ -97,9 +97,9 @@
       "UpstreamPathTemplate": "/services/fakepayment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": ["payment_full_permission"]
+        "AuthenticationProviderKey": "GatewayAuthenticationScheme"
       }
     }
   ],
