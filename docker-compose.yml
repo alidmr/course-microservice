@@ -22,6 +22,41 @@ services:
     build:
       context: .
       dockerfile: src/IdentityServer/FreeCourse.IdentityServer/Dockerfile
+  basket.api:
+    image: basket_api_image
+    build:
+      context: .
+      dockerfile: src/Services/Basket/FreeCourse.Services.Basket/Dockerfile
+  photostock.api:
+    image: photostock_api_image
+    build:
+      context: .
+      dockerfile: src/Services/PhotoStock/FreeCourse.Services.PhotoStock/Dockerfile
+  discount.api:
+    image: discount_api_image
+    build:
+      context: .
+      dockerfile: src/Services/Discount/FreeCourse.Services.Discount/Dockerfile
+  fakepayment.api:
+    image: fakepayment_api_image
+    build:
+      context: .
+      dockerfile: src/Services/FakePayment/FreeCourse.Services.FakePayment/Dockerfile
+  order.api:
+    image: order_api_image
+    build:
+      context: .
+      dockerfile: src/Services/Order/FreeCourse.Services.Order.API/Dockerfile
+  gateway.api:
+    image: gateway_api_image
+    build:
+      context: .
+      dockerfile: src/Gateways/FreeCourse.Gateway/Dockerfile
+  coursemvc.web:
+    image: coursemvc_web_image
+    build:
+      context: .
+      dockerfile: src/Frontends/FreeCourse.Web/Dockerfile
 volumes:
   catalogdb_volume:
   discountdb_volume:
